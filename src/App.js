@@ -33,7 +33,8 @@ class App extends Component {
           <div className="container">
             <Header getPhotos={this.getPhotos}/>
             <Switch>
-             <Route path="/:tag" render={({match}) => <GalleryForm match={match} data={this.state.pics}/>}/>
+             <Route path="/:tag" render={() => <GalleryForm getPhotos={({match}) => this.getPhotos(match.params.tag)} data={this.state.pics}/>}/>
+             {/* <Route path="/cats" render={() => <GalleryForm getPhotos={() => this.getPhotos('cat')} data={this.state.pics}/>}/> */}
              {/* <Route path="/:tag" render={({match})=> <Test match={match}/>}/> */}
             </Switch>
         </div>

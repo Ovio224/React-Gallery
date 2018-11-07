@@ -3,30 +3,39 @@ import GalleryItem from './GalleryItem';
 
 const GalleryForm = (props) => {
 
-  // let tag = props.match.params.tag;
+  // handleQuery(){
+  //   let tag = this.props.match.params.tag;
+  //   this.props.getPhotos(tag);
+  //   console.log(1);
+  // }
 
-  const results = props.data;
-  let pictures;
-  if(results.length > 0) {
-    pictures = results.map(pic => 
-      <GalleryItem
-        farm={pic.farm}
-        server={pic.server}
-        id={pic.id}
-        secret={pic.secret}
-        key={pic.id}
-        title={pic.title} 
-      />
-    ); // end map
-  } else {
-    console.log('No results');
-  }
+  // componentWillUnmount(){
+  //   this.handleQuery();
+  // }
+
+    const results = props.data;
+    let pictures;
+    if(results.length > 0) {
+      pictures = results.map(pic => 
+        <GalleryItem
+          farm={pic.farm}
+          server={pic.server}
+          id={pic.id}
+          secret={pic.secret}
+          key={pic.id}
+          title={pic.title} 
+        />
+      ); // end map
+    } else {
+      console.log('No results');
+    }
 
   return (
     <div className="photo-container">
       <h2>Results</h2>
       <ul>
         {pictures}
+        {props.getPhotos}
         {/* <!-- Not Found -->
         <li className="not-found">
           <h3>No Results Found</h3>
