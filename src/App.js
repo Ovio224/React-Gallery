@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import {BrowserRouter, Route, Switch} from 'react-router-dom';
+import {BrowserRouter, Route, Switch, Redirect} from 'react-router-dom';
 import apiKey from './.config';
 
 import Header from './Components/Header/Header';
 import GalleryForm from './Components/GalleryForm';
-// import Test from './Components/test';
 
-class App extends Component {
+export default class App extends Component {
 
     state = {
       pics: [],
@@ -28,19 +27,19 @@ class App extends Component {
 
   render() {
     return (
+      
       <BrowserRouter>
-
           <div className="container">
-            <Header getPhotos={this.getPhotos}/>
+            <Route path="/" render={({location}) => <Header location={location} getPhotos={this.getPhotos}/>}/>
             <Switch>
-             <Route path="/:tag" render={() => <GalleryForm getPhotos={({match}) => this.getPhotos(match.params.tag)} data={this.state.pics}/>}/>
-             {/* <Route path="/cats" render={() => <GalleryForm getPhotos={() => this.getPhotos('cat')} data={this.state.pics}/>}/> */}
-             {/* <Route path="/:tag" render={({match})=> <Test match={match}/>}/> */}
+             <Route path="/search?tag=:tag" render={({match}) => <GalleryForm getPhotos={() => this.getPhotos()} match={match} data={this.state.pics}/>}/>
+             {/* <Route path="/" render={({match}) => <GalleryForm match={match} getPhotos={() => this.getPhotos(match.path)} data={this.state.pics}/>}/> */}
+             <Route path="/search" render={() => <GalleryForm data={this.state.pics}/>}/>
+             <Route path="/" render={() => <Redirect to="/search"/>}/>
+
             </Switch>
         </div>
       </BrowserRouter>
       );
   }
 }
-
-export default App;

@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+//import { NavLink } from 'react-router-dom';
 
 export default class SearchForm extends Component {
 
@@ -20,7 +21,7 @@ export default class SearchForm extends Component {
 
   render(){
     return(
-        <form className="search-form" onSubmit={this.handleSearch}>
+        <form className="search-form">
           <input 
             type="search"
             name="search"

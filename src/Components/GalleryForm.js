@@ -4,15 +4,15 @@ import GalleryItem from './GalleryItem';
 const GalleryForm = (props) => {
 
   // handleQuery(){
-  //   let tag = this.props.match.params.tag;
-  //   this.props.getPhotos(tag);
-  //   console.log(1);
+    let tag = props.match;
+    // props.getPhotos(tag);
+    console.log(tag);
   // }
 
   // componentWillUnmount(){
   //   this.handleQuery();
   // }
-
+    // props.getPhotos();
     const results = props.data;
     let pictures;
     if(results.length > 0) {
@@ -35,7 +35,6 @@ const GalleryForm = (props) => {
       <h2>Results</h2>
       <ul>
         {pictures}
-        {props.getPhotos}
         {/* <!-- Not Found -->
         <li className="not-found">
           <h3>No Results Found</h3>
