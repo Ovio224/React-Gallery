@@ -5,7 +5,6 @@ import apiKey from './.config';
 
 import Header from './Components/Header/Header';
 import GalleryForm from './Components/GalleryForm';
-// import Test from './Components/test';
 
 class App extends Component {
 
@@ -28,14 +27,14 @@ class App extends Component {
 
   render() {
     return (
+      
       <BrowserRouter>
-
           <div className="container">
             <Header getPhotos={this.getPhotos}/>
             <Switch>
-             <Route path="/:tag" render={() => <GalleryForm getPhotos={({match}) => this.getPhotos(match.params.tag)} data={this.state.pics}/>}/>
-             {/* <Route path="/cats" render={() => <GalleryForm getPhotos={() => this.getPhotos('cat')} data={this.state.pics}/>}/> */}
-             {/* <Route path="/:tag" render={({match})=> <Test match={match}/>}/> */}
+             {/* <Route path="/:tag" render={() => <GalleryForm getPhotos={({match}) => this.getPhotos(match.params.tag)} data={this.state.pics}/>}/> */}
+             <Route path="/" render={({match}) => <GalleryForm match={match} getPhotos={() => this.getPhotos(match.path)} data={this.state.pics}/>}/>
+
             </Switch>
         </div>
       </BrowserRouter>
