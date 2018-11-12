@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 
 export default class SearchForm extends Component {
 
-  // change the query string 
+  // change the query string whenever the form is submitted
   handleSearch = e => {
     e.preventDefault();
     this.props.history.push({pathname: '/search', search: `?tag=${this.query.value}`})
@@ -16,7 +16,6 @@ export default class SearchForm extends Component {
             type="search"
             name="search"
             placeholder="Search"
-            onChange={this.handleSearchState}
             ref={(input) => this.query = input}
           />
           <button type="submit" className="search-button">

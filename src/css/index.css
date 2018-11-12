@@ -1,15 +1,17 @@
 body {
   text-align: center;
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Nunito', sans-serif;
   color: #3f4850;
   background-color: #f3f5f6;
 }
 
-/* .card {
-  background-color:#fff;
-  width: 220px;
-  height: 40px;
-} */
+.logo {
+  width: auto;
+  height: 100px;
+  padding: 20px;
+  margin-top: -50px;
+  margin-bottom: 20px;
+}
 
 .loading {
   width: auto !important;

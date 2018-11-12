@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import queryString from 'query-string';
 import uniqid from 'uniqid';
-import loading from '../loading.gif'
 import GalleryItem from './GalleryItem';
 
 class GalleryForm extends Component {
@@ -13,7 +12,6 @@ class GalleryForm extends Component {
   }
 
   render(){
-
     // displaying the pictures by passing the necessary props
     const results = this.props.data;
     let pictures;
@@ -28,16 +26,14 @@ class GalleryForm extends Component {
           title={pic.title} 
         />
       ); // end map
+    } else if(this.props.loadingState){
+      pictures = <img className="loading" src={(require('../assets/loading.gif'))} alt="Loading..." />
     }
-    if(this.props.loading === true){
-      console.log('sal');
-    }
+
     return (
-      
       <div className="photo-container">
         <h2>Results</h2>
         <ul>
-
           { (pictures) ? pictures :
            <li className="not-found">
             <h3>No Results Found</h3>
@@ -45,6 +41,7 @@ class GalleryForm extends Component {
           </li>
           }
         </ul>
+        <span>	&copy;  <strong>Hello</strong> there</span>
       </div>
     );
   }

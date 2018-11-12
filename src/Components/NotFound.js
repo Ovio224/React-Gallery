@@ -2,7 +2,7 @@ import React from 'react';
 import '../css/notFound.css';
 
 const NotFound = () => {
-  return(
+  return( // custom 404 page 
     <div id="notfound">
 		<div className="notfound">
 			<div className="notfound-404">

@@ -29,7 +29,7 @@ export default class App extends Component {
 
   render() {
     return (
-      
+      // main container with routes
       <BrowserRouter>
           <div className="container">
             <Route path="/" render={({history}) => <Header history={history}/>}/>
