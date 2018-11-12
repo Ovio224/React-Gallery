@@ -6,7 +6,7 @@ const Header = (props) => {
 
   return(
     <div>
-      <img className="logo" src={(require('../../assets/logo.png'))} alt="Loading..." />
+      <a href="/"><img className="logo" src={(require('../../assets/logo.png'))} alt="Loading..." /></a>
       <SearchForm history={props.history}/>
       <Nav />
     </div>

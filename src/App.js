@@ -16,7 +16,7 @@ export default class App extends Component {
     }
 
   // fetching the data
-  getPhotos = (query = 'landscape') => {
+  getPhotos = (query = 'beach') => {
     axios.get(`https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${query}&sort=interestingness-desc&per_page=24&format=json&nojsoncallback=1`)
       .then(response => {
         this.setState({

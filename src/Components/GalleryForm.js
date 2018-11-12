@@ -12,6 +12,7 @@ class GalleryForm extends Component {
   }
 
   render(){
+    const names = queryString.parse(this.props.location.search).tag;
     // displaying the pictures by passing the necessary props
     const results = this.props.data;
     let pictures;
@@ -32,7 +33,10 @@ class GalleryForm extends Component {
 
     return (
       <div className="photo-container">
-        <h2>Results</h2>
+        { (names) ? 
+        <h2>Pics of {names}s</h2>
+        : <h2>Pictures</h2>
+        }
         <ul>
           { (pictures) ? pictures :
            <li className="not-found">
@@ -41,7 +45,10 @@ class GalleryForm extends Component {
           </li>
           }
         </ul>
-        <span>	&copy;  <strong>Hello</strong> there</span>
+        { (names) ? 
+        <span>	&copy;  Oh, I can see that you are liking <strong>{names}s</strong>, aren't you?</span>
+        : <span>  Hello there, I hope you like <strong>pictures</strong>. Go ahead, search for something!</span>
+        }
       </div>
     );
   }
