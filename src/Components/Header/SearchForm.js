@@ -1,32 +1,22 @@
 import React, {Component} from 'react';
-//import { NavLink } from 'react-router-dom';
 
 export default class SearchForm extends Component {
 
-  state = {
-    searchText: ''
-  }
-
-  onSearch = e => {
-    this.setState({
-      searchText: e.target.value
-    });
-  }
-
+  // change the query string 
   handleSearch = e => {
     e.preventDefault();
-    this.props.getPhotos(this.query.value);
+    this.props.history.push({pathname: '/search', search: `?tag=${this.query.value}`})
     e.currentTarget.reset();
   }
 
   render(){
     return(
-        <form className="search-form">
+        <form className="search-form" onSubmit={this.handleSearch}>
           <input 
             type="search"
             name="search"
             placeholder="Search"
-            onChange={this.onSearch}
+            onChange={this.handleSearchState}
             ref={(input) => this.query = input}
           />
           <button type="submit" className="search-button">

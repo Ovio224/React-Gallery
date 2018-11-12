@@ -1,10 +1,12 @@
+// dependencies
 import React, { Component } from 'react';
 import axios from 'axios';
 import {BrowserRouter, Route, Switch, Redirect} from 'react-router-dom';
 import apiKey from './.config';
-
+// components
 import Header from './Components/Header/Header';
 import GalleryForm from './Components/GalleryForm';
+import NotFound from './Components/NotFound';
 
 export default class App extends Component {
 
@@ -13,8 +15,8 @@ export default class App extends Component {
       loading: true
     }
 
-
-  getPhotos = (query) => {
+  // fetching the data
+  getPhotos = (query = 'landscape') => {
     axios.get(`https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${query}&sort=interestingness-desc&per_page=24&format=json&nojsoncallback=1`)
       .then(response => {
         this.setState({
@@ -30,13 +32,18 @@ export default class App extends Component {
       
       <BrowserRouter>
           <div className="container">
-            <Route path="/" render={({location}) => <Header location={location} getPhotos={this.getPhotos}/>}/>
+            <Route path="/" render={({history}) => <Header history={history}/>}/>
             <Switch>
-             <Route path="/search?tag=:tag" render={({match}) => <GalleryForm getPhotos={() => this.getPhotos()} match={match} data={this.state.pics}/>}/>
-             {/* <Route path="/" render={({match}) => <GalleryForm match={match} getPhotos={() => this.getPhotos(match.path)} data={this.state.pics}/>}/> */}
-             <Route path="/search" render={() => <GalleryForm data={this.state.pics}/>}/>
-             <Route path="/" render={() => <Redirect to="/search"/>}/>
-
+              <Route exact path="/search" 
+                render={({location}) => <GalleryForm 
+                  location={location} 
+                  data={this.state.pics} 
+                  getPhotos={this.getPhotos} 
+                  key={location.key} // passing a unique key so componentDidMount mounts everytime the route changes
+                  loadingState={this.state.loading}
+                  />}/>
+              <Route exact path="/" render={() => <Redirect to="/search"/>}/>
+              <Route component={NotFound} />
             </Switch>
         </div>
       </BrowserRouter>

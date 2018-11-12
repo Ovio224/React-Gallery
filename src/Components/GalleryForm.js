@@ -1,48 +1,57 @@
-import React from 'react';
+import React, {Component} from 'react';
+import queryString from 'query-string';
+import uniqid from 'uniqid';
+import loading from '../loading.gif'
 import GalleryItem from './GalleryItem';
 
-const GalleryForm = (props) => {
+class GalleryForm extends Component {
 
-  // handleQuery(){
-    let tag = props.match;
-    // props.getPhotos(tag);
-    console.log(tag);
-  // }
+  // change query string whenever a search occures
+  componentDidMount(){
+    const params = queryString.parse(this.props.location.search);
+    this.props.getPhotos(params.tag);
+  }
 
-  // componentWillUnmount(){
-  //   this.handleQuery();
-  // }
-    // props.getPhotos();
-    const results = props.data;
+  render(){
+
+    // displaying the pictures by passing the necessary props
+    const results = this.props.data;
     let pictures;
     if(results.length > 0) {
       pictures = results.map(pic => 
         <GalleryItem
           farm={pic.farm}
           server={pic.server}
+          key={uniqid()}
           id={pic.id}
           secret={pic.secret}
-          key={pic.id}
           title={pic.title} 
         />
       ); // end map
-    } else {
-      console.log('No results');
     }
+    if(this.props.loading === true){
+      console.log('sal');
+    }
+    return (
+      
+      <div className="photo-container">
+        <h2>Results</h2>
+        <ul>
 
-  return (
-    <div className="photo-container">
-      <h2>Results</h2>
-      <ul>
-        {pictures}
-        {/* <!-- Not Found -->
-        <li className="not-found">
-          <h3>No Results Found</h3>
-          <p>Your search did not return any results. Please try again.</p>
-        </li> */}
-      </ul>
-    </div>
-  );
+          { (pictures) ? pictures :
+           <li className="not-found">
+            <h3>No Results Found</h3>
+            <p>Your search did not return any results. Please try again.</p>
+          </li>
+          }
+        </ul>
+      </div>
+    );
+  }
 }
 
 export default GalleryForm;
+
+// conditie ? rezolv1
+// : conditie2 ? rezolv2
+// : niciunu
