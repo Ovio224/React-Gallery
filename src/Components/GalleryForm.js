@@ -46,8 +46,8 @@ class GalleryForm extends Component {
           }
         </ul>
         { (names) ? 
-        <span>	&copy;  Oh, I can see that you are liking <strong>{names}s</strong>, aren't you?</span>
-        : <span>  Hello there, I hope you like <strong>pictures</strong>. Go ahead, search for something!</span>
+        <span className="footer">	&copy;  Oh, I can see that you are liking <strong>{names}s</strong>, aren't you?</span>
+        : <span className="footer">  Hello there, I hope you like <strong>pictures</strong>. Go ahead, search for something!</span>
         }
       </div>
     );

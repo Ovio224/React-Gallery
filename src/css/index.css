@@ -21,6 +21,12 @@ body {
   margin-right: auto;
 }
 
+.footer {
+  display: block;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
 h2 {
   font-size: 2em;
   margin: 52px 0 40px;
