@@ -21,24 +21,24 @@ class GalleryForm extends Component {
         <GalleryItem
           farm={pic.farm}
           server={pic.server}
-          key={uniqid()}
+          key={uniqid()} // totally inecessary unique id dependancy
           id={pic.id}
           secret={pic.secret}
           title={pic.title} 
         />
       ); // end map
     } else if(this.props.loadingState){
-      pictures = <img className="loading" src={(require('../assets/loading.gif'))} alt="Loading..." />
+      pictures = <img className="loading" src={(require('../assets/loading.gif'))} alt="Loading..." /> // loading gif
     }
 
     return (
       <div className="photo-container">
-        { (names) ? 
+        { (names) ? // display the name of the tag
         <h2>Pics of {names}s</h2>
         : <h2>Pictures</h2>
         }
         <ul>
-          { (pictures) ? pictures :
+          { (pictures) ? pictures : // display either the pictures or no results
            <li className="not-found">
             <h3>No Results Found</h3>
             <p>Your search did not return any results. Please try again.</p>
