@@ -2,11 +2,18 @@ import React, {Component} from 'react';
 
 export default class SearchForm extends Component {
 
+  state = {
+    loading: true
+  }
+
   // change the query string whenever the form is submitted
   handleSearch = e => {
     e.preventDefault();
     this.props.history.push({pathname: '/search', search: `?tag=${this.query.value}`})
     e.currentTarget.reset();
+    this.setState({
+      loading: !this.props.loadingState
+    })
   }
 
   render(){

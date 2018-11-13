@@ -27,7 +27,8 @@ class GalleryForm extends Component {
           title={pic.title} 
         />
       ); // end map
-    } else if(this.props.loadingState){
+    }
+     if(this.props.loadingState){
       pictures = <img className="loading" src={(require('../assets/loading.gif'))} alt="Loading..." /> // loading gif
     }
 

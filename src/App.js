@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import {BrowserRouter, Route, Switch, Redirect} from 'react-router-dom';
-import apiKey from './.config';
+import apiKey from './config';
 // components
 import Header from './Components/Header/Header';
 import GalleryForm from './Components/GalleryForm';
@@ -17,6 +17,7 @@ export default class App extends Component {
 
   // fetching the data
   getPhotos = (query = 'beach') => {
+    this.setState({loading: true});
     axios.get(`https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${query}&sort=interestingness-desc&per_page=24&format=json&nojsoncallback=1`)
       .then(response => {
         this.setState({
@@ -32,7 +33,7 @@ export default class App extends Component {
       // main container with routes
       <BrowserRouter>
           <div className="container">
-            <Route path="/" render={({history}) => <Header history={history}/>}/>
+            <Route path="/" render={({history}) => <Header history={history} loadingState={this.state.loading}/>}/>
             <Switch>
               <Route exact path="/search" 
                 render={({location}) => <GalleryForm 
