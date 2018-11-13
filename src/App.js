@@ -33,7 +33,7 @@ export default class App extends Component {
       // main container with routes
       <BrowserRouter>
           <div className="container">
-            <Route path="/" render={({history}) => <Header history={history} loadingState={this.state.loading}/>}/>
+            <Route path="/" render={({history}) => <Header history={history}/>}/>
             <Switch>
               <Route exact path="/search" 
                 render={({location}) => <GalleryForm 
