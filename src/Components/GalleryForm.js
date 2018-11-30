@@ -21,7 +21,7 @@ class GalleryForm extends Component {
         <GalleryItem
           farm={pic.farm}
           server={pic.server}
-          key={uniqid()} // totally inecessary unique id dependancy
+          key={uniqid()} // totally inecessary unique id dpdncy
           id={pic.id}
           secret={pic.secret}
           title={pic.title} 
@@ -56,7 +56,3 @@ class GalleryForm extends Component {
 }
 
 export default GalleryForm;
-
-// conditie ? rezolv1
-// : conditie2 ? rezolv2
-// : niciunu

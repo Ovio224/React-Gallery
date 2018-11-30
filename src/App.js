@@ -44,7 +44,7 @@ export default class App extends Component {
                   loadingState={this.state.loading}
                   />}/>
               <Route exact path="/" render={() => <Redirect to="/search"/>}/>
-              <Route component={NotFound} />
+              <Route Component={NotFound} />
             </Switch>
         </div>
       </BrowserRouter>
