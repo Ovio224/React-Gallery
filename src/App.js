@@ -23,7 +23,7 @@ export default class App extends Component {
         this.setState({
           pics: response.data.photos.photo,
           loading: false
-        }) // end setState
+        }); // end setState
       }) // end then
       .catch(error => console.log(error));
   }
@@ -32,20 +32,20 @@ export default class App extends Component {
     return (
       // main container with routes
       <BrowserRouter>
-          <div className="container">
-            <Route path="/" render={({history}) => <Header history={history}/>}/>
-            <Switch>
-              <Route exact path="/search" 
+        <div className="container">
+          <Route exact path="/search" render={({history}) => <Header history={history}/>}/>
+          <Switch>
+            <Route exact path="/search" 
                 render={({location}) => <GalleryForm 
                   location={location} 
                   data={this.state.pics} 
                   getPhotos={this.getPhotos} 
-                  key={location.key} // passing a unique key so componentDidMount mounts everytime the route changes
+                  key={location.key} // passing a unique key so componentDidMount mounts everytime the route changes !important
                   loadingState={this.state.loading}
-                  />}/>
-              <Route exact path="/" render={() => <Redirect to="/search"/>}/>
-              <Route Component={NotFound} />
-            </Switch>
+                />}/>
+            <Route exact path="/" render={() => <Redirect to="/search"/>}/>
+            <Route component={NotFound} />
+          </Switch>
         </div>
       </BrowserRouter>
       );

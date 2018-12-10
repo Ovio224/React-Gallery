@@ -9,7 +9,7 @@ export default class SearchForm extends Component {
   // change the query string whenever the form is submitted
   handleSearch = e => {
     e.preventDefault();
-    this.props.history.push({pathname: '/search', search: `?tag=${this.query.value}`})
+    this.props.history.push({ pathname: '/search', search: `?tag=${this.query.value}`})
     e.currentTarget.reset();
     this.setState({
       loading: !this.props.loadingState

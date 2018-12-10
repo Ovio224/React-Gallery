@@ -21,7 +21,7 @@ class GalleryForm extends Component {
         <GalleryItem
           farm={pic.farm}
           server={pic.server}
-          key={uniqid()} // totally inecessary unique id dpdncy
+          key={uniqid()} // totally unecessary unique id dpdncy
           id={pic.id}
           secret={pic.secret}
           title={pic.title} 
@@ -47,7 +47,7 @@ class GalleryForm extends Component {
           }
         </ul>
         { (names) ? 
-        <span className="footer">	&copy;  Oh, I can see that you are liking <strong>{names}s</strong>, aren't you?</span>
+        <span className="footer">	Ovi &copy; Oh, I can see that you are liking <strong>{names}s</strong>, aren't you?</span>
         : <span className="footer">  Hello there, I hope you like <strong>pictures</strong>. Go ahead, search for something!</span>
         }
       </div>
