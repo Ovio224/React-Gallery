@@ -80,6 +80,15 @@ input {
   color: #fff;
 }
 
+.btn-order {
+  display: block;
+  background: #438bbd;
+  border-radius: 3px;
+  padding: 5px;
+  color: #fff;
+  margin-bottom: 1em;  
+}
+
 .main-nav .active,
 .main-nav a:hover,
 .search-form button:hover {
@@ -96,7 +105,7 @@ input {
 
 .photo-container ul li {
   width: 220px;
-  height: 165px;
+  /* height: 165px; */
   overflow: hidden;
   margin-bottom: 15px;
 }

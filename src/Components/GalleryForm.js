@@ -11,6 +11,11 @@ class GalleryForm extends Component {
     this.props.getPhotos(params.tag);
   }
 
+  handleClick = () => {
+    const params = queryString.parse(this.props.location.search);
+      this.props.getMorePics(params && params.tag)
+  }
+
   render(){
     const names = queryString.parse(this.props.location.search).tag;
     // displaying the pictures by passing the necessary props
@@ -38,6 +43,7 @@ class GalleryForm extends Component {
         <h2>Pics of {names}s</h2>
         : <h2>Pictures</h2>
         }
+        <button className="btn-order" onClick={this.props.handleSort}>Order</button>
         <ul>
           { (pictures) ? pictures : // display either the pictures or no results
            <li className="not-found">
@@ -46,6 +52,7 @@ class GalleryForm extends Component {
           </li>
           }
         </ul>
+        <button className="btn-order" onClick={this.handleClick}>Show More</button>
         { (names) ? 
         <span className="footer">	Ovi &copy; Oh, I can see that you are liking <strong>{names}s</strong>, aren't you?</span>
         : <span className="footer">  Hello there, I hope you like <strong>pictures</strong>. Go ahead, search for something!</span>

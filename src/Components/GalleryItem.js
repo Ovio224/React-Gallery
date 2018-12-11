@@ -6,6 +6,7 @@ const GalleryItem = (props) => {
   return (
     <li>
       <img src={url} alt={props.title} title={props.title}/>
+      <span> {props.title}</span>
     </li>
   );
 }
