@@ -43,7 +43,7 @@ class GalleryForm extends Component {
         <h2>Pics of {names}s</h2>
         : <h2>Pictures</h2>
         }
-        <button className="btn-order" onClick={this.props.handleSort}>Order</button>
+        <button className="btn-order" onClick={this.props.handleSort}>Order By Title</button>
         <ul>
           { (pictures) ? pictures : // display either the pictures or no results
            <li className="not-found">

@@ -41,13 +41,13 @@ export default class App extends Component {
     this.setState(prevstate => ({
       sortDirection: prevstate.pics === this.state.pics ? invertDirection[this.state.sortDirection] : 'asc', 
       pics: orderBy(this.state.pics, ['title'], this.state.sortDirection)
-
-    }))
+    }));
   }
 
   getMorePics(query = 'beach'){
     axios.get(`https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${query}&sort=interestingness-desc&per_page=24&page=${this.state.counter + 1}&format=json&nojsoncallback=1`)
       .then(response => {
+        console.log(response);
         this.setState({
           counter: this.state.counter + 1,
           pics: this.state.pics.concat(response.data.photos.photo)

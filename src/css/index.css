@@ -81,12 +81,15 @@ input {
 }
 
 .btn-order {
-  display: block;
-  background: #438bbd;
-  border-radius: 3px;
-  padding: 5px;
+  background-color: #438bbd;
+  border: none;
+  padding: 10px;
+  border-radius: 4px;
+  cursor: pointer;
   color: #fff;
-  margin-bottom: 1em;  
+}
+.btn-order:hover {
+  background-color: #275270;
 }
 
 .main-nav .active,
