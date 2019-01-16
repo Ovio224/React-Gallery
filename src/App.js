@@ -64,7 +64,8 @@ export default class App extends Component {
           <Route exact path="/search" render={({history}) => <Header history={history}/>}/>
           <Switch>
             <Route exact path="/search" 
-                render={({location}) => <GalleryForm 
+                render={({location}) => 
+                <GalleryForm 
                   handleSort={this.handleSort.bind(this)}
                   getMorePics={this.getMorePics.bind(this)}
                   location={location} 
